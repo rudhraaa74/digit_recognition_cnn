@@ -215,32 +215,32 @@ Stop after Phase 5 and wait for approval.
 
 ---
 
-### Phase 6 — Prediction on a Single Image
+### Phase 6 — Deep Dive into Test Predictions
 
-Goal: let the user run the model on any image file they provide.
+Goal: analyse the model's confidence across all 28,000 Kaggle test predictions to understand where it is certain and where it struggles.
 
 Tasks:
-1. Write src/predict.py that:
-   - Accepts an image file path as a command line argument
-   - Converts the image to grayscale
-   - Resizes it to 28×28
-   - Applies the same normalisation as training
+1. Write src/analyse.py that:
    - Loads model/digit_cnn.pth
-   - Runs a forward pass
-   - Applies softmax to convert outputs to probabilities
-   - Prints the predicted digit and the confidence percentage
-   - Prints the probability for all 10 digits so the user can see the full distribution
-2. Tell the user how to create a test image (draw a digit in Paint or any tool,
-   save as PNG) and exactly how to run predict.py on it
+   - Loads data/test.csv and applies the same preprocessing as training
+   - Runs inference on all 28,000 images and applies softmax to get probabilities
+   - Finds the top 10 most confident predictions (closest to 100%) for each digit 0–9
+   - Finds the top 20 least confident predictions overall (model was most uncertain)
+   - Saves a summary to model/confidence_report.csv with columns: ImageId, PredictedLabel, Confidence
+
+2. Write notebooks/confidence.ipynb that:
+   - Plots a histogram of confidence scores across all 28,000 predictions — shows how often the model is 99%+ confident vs below 80%
+   - Displays the 20 least confident predictions as a grid with the predicted digit and confidence percentage shown under each image
+   - Displays the most confident prediction for each digit 0–9 in a row
+   - Plots a bar chart showing average confidence per digit — which digits does the model predict most and least confidently
 
 Explain to the user:
-- What softmax does (converts raw output numbers into probabilities that sum to 1)
-- Why preprocessing must exactly match training data (distribution shift)
-- What it means when confidence is low (e.g. 60%) vs high (99%)
+- What softmax confidence actually means (a 95% confidence does not mean the model is right 95% of the time — it means it assigned 95% probability to that class)
+- What it means when confidence is low — the model sees features of two digits and cannot decide
+- Which digits typically have lower average confidence and why (visually similar pairs like 4/9, 3/8)
+- What the confidence histogram shape tells you about the model overall — a good model should be heavily skewed toward high confidence
 
 Stop after Phase 6 and wait for approval.
-
----
 
 ### Phase 7 — Experiments (optional)
 

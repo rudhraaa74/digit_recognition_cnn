@@ -61,7 +61,7 @@ class KaggleMNISTDataset(Dataset):
         
         return pixel_tensor, label_tensor
 
-def get_dataloaders(csv_path="../data/digi_rec_train.csv", batch_size=64):
+def get_dataloaders(csv_path="data/digi_rec_train.csv", batch_size=64):
     """
     Loads the dataset, splits it into training (80%) and validation (20%),
     and returns DataLoaders for both.
@@ -92,10 +92,10 @@ def get_dataloaders(csv_path="../data/digi_rec_train.csv", batch_size=64):
     
     return train_loader, val_loader
 
-def get_train_loader(csv_path="../data/digi_rec_train.csv", batch_size=64):
+def get_train_loader(csv_path="data/digi_rec_train.csv", batch_size=64):
     train_loader, _ = get_dataloaders(csv_path, batch_size)
     return train_loader
 
-def get_val_loader(csv_path="../data/digi_rec_train.csv", batch_size=64):
+def get_val_loader(csv_path="data/digi_rec_train.csv", batch_size=64):
     _, val_loader = get_dataloaders(csv_path, batch_size)
     return val_loader
