@@ -1,0 +1,23 @@
+# Data
+data/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+
+# Mac
+.DS_Store
+
+# Models
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
