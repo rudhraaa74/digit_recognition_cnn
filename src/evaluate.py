@@ -18,7 +18,7 @@ from src.dataset import get_val_loader
 
 MODEL_PATH = "model/digit_cnn.pth"
 TEST_CSV_PATH = "data/digi_rec_test.csv"
-PREDICTIONS_PATH = "model/predictions.csv"
+PREDICTIONS_PATH = "submission/predictions.csv"
 
 def evaluate_validation(model, device):
     print("--- Evaluating on Validation Set ---")

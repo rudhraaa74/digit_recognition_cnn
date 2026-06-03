@@ -42,7 +42,7 @@ digit-recognizer/
 ## Rules
 
 ### Structure rules
-- **Single Notebook Workflow**: All code and explanations for every phase must be progressively built and documented in one comprehensive notebook (`notebooks/digit_recognizer_walkthrough.ipynb`). The user should be able to read this single file from top to bottom and understand every step of the project.
+- **Single Notebook Workflow**: All code and explanations for every phase must be progressively built and documented in one comprehensive notebook (`notebooks/main.ipynb`). The user should be able to read this single file from top to bottom and understand every step of the project.
 - While `src/` scripts can still be populated for standardisation, the primary development and teaching environment is the single notebook.
 - All data goes in `/data` — never hardcode paths elsewhere, always reference `../data`
 - All trained model weights go in `/model` — never save `.pth` files anywhere else
